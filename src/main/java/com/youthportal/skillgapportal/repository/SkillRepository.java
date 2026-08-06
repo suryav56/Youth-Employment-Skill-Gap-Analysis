@@ -1,4 +1,13 @@
 package com.youthportal.skillgapportal.repository;
 
-public class SkillRepository {
+import com.youthportal.skillgapportal.entity.Skill;
+import com.youthportal.skillgapportal.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface SkillRepository extends JpaRepository<Skill, Long> {
+
+    List<Skill> findByUser(User user);
+
 }

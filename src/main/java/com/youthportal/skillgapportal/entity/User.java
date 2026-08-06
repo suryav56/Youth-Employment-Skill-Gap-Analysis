@@ -3,6 +3,9 @@ package com.youthportal.skillgapportal.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -28,4 +31,12 @@ public class User {
     private String role;
 
     private LocalDateTime createdAt;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Profile profile;
+
+    @OneToMany(mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<Skill> skills = new ArrayList<>();
 }

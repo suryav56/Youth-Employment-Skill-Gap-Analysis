@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Skills</title>
+</head>
+<body>
+<form th:action="@{/skills}" th:object="${skill}" method="post">
+
+    <label>Skill Name</label>
+    <input type="text" th:field="*{name}" required>
+
+    <br><br>
+
+    <label>Category</label>
+    <input type="text" th:field="*{category}">
+
+    <br><br>
+
+    <label>Proficiency</label>
+
+    <select th:field="*{proficiency}">
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Advanced">Advanced</option>
+    </select>
+
+    <br><br>
+
+    <button type="submit">
+        Save Skill
+    </button>
+
+</form>
+
+<hr>
+
+<h3>Your Skills</h3>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Proficiency</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="skill : ${skills}">
+        <td th:text="${skill.name}"></td>
+        <td th:text="${skill.category}"></td>
+        <td th:text="${skill.proficiency}"></td>
+        <td>
+            <a th:href="@{/skills/edit/{id}(id=${skill.id})}"
+               class="btn btn-warning btn-sm">
+                Edit
+            </a>
+
+            <a th:href="@{/skills/delete/{id}(id=${skill.id})}"
+               class="btn btn-danger btn-sm"
+               onclick="return confirm('Delete this skill?')">
+                Delete
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
