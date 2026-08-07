@@ -31,5 +31,4 @@ public class Skill {
 
     @ManyToMany(mappedBy = "requiredSkills")
     private Set<Career> careers = new HashSet<>();
-
 }

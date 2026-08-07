@@ -16,11 +16,15 @@ public class TrainingCourse {
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private String title;
 
     private String description;
 
-    private Integer duration;
+    private String provider;
 
-    private String level;
+    private String duration;
+
+    @ManyToOne
+    @JoinColumn(name = "skill_id", nullable = false)
+    private Skill skill;
 }

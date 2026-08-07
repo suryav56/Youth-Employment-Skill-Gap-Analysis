@@ -71,6 +71,7 @@
                     <th>Career</th>
                     <th>Description</th>
                     <th>Assign Skills</th>
+                    <th>Analyze</th>
                 </tr>
 
                 </thead>
@@ -89,6 +90,13 @@
                         <a th:href="@{/careers/{id}/skills(id=${career.id})}"
                            class="btn btn-success btn-sm">
                             Assign Skills
+                        </a>
+                    </td>
+
+                    <td>
+                        <a th:href="@{/skill-gap/{id}(id=${career.id})}"
+                           class="btn btn-primary btn-sm">
+                            Analyze
                         </a>
                     </td>
 
